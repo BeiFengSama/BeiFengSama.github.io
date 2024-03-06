@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="本篇章为测试开发岗位面试题合集 测试基础测试用例的方法、依据有哪些？ 白盒测试：  用例设计方法：语句覆盖、判定覆盖、条件覆盖、判定&#x2F;条件覆盖、条件组合覆盖、路径覆盖 依据：代码结构  黑盒测试  用例设计方法：等价类划分、边界值分析法、错误推断方法、因果图方法、判定表驱动分析方法、正交实验法、场景法依据：用户需求规格说明书、详细设计说明书   软件测试的流程  测试需求分析阶段：阅读需">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试面经之基础篇">
+<meta property="og:url" content="https://beifengsama.github.io/2024/03/06/%E6%B5%8B%E8%AF%95%E9%9D%A2%E7%BB%8F%E4%B9%8B%E5%9F%BA%E7%A1%80%E7%AF%87/index.html">
+<meta property="og:site_name" content="邶风的小窝">
+<meta property="og:description" content="本篇章为测试开发岗位面试题合集 测试基础测试用例的方法、依据有哪些？ 白盒测试：  用例设计方法：语句覆盖、判定覆盖、条件覆盖、判定&#x2F;条件覆盖、条件组合覆盖、路径覆盖 依据：代码结构  黑盒测试  用例设计方法：等价类划分、边界值分析法、错误推断方法、因果图方法、判定表驱动分析方法、正交实验法、场景法依据：用户需求规格说明书、详细设计说明书   软件测试的流程  测试需求分析阶段：阅读需">
+<meta property="og:locale">
+<meta property="article:published_time" content="2024-03-06T08:41:43.000Z">
+<meta property="article:modified_time" content="2024-03-06T08:41:43.656Z">
+<meta property="article:author" content="BeiFeng">
+<meta property="article:tag" content="面经">
+<meta property="article:tag" content="测试开发">
+<meta property="article:tag" content="基础">
+<meta name="twitter:card" content="summary">
+
+    <meta name="keywords" content="BeiFeng">
+
+
+<title >测试面经之基础篇</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon.svg?v=2.1.10' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon.svg?v=2.1.10' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"beifengsama.github.io","author":"BeiFeng","root":"/","typed_text":["not to be illuminated."],"theme_version":"2.1.10","theme":{"switch":true,"default":"style-dark"},"favicon":{"logo":"/img/favicon.svg","icon16":"/img/favicon.svg","icon32":"/img/favicon.svg","appleTouchIcon":null,"webmanifest":null,"visibilitychange":false,"hidden":"/failure.ico","showText":"(/≧▽≦/)咦！又好了！","hideText":"(●—●)喔哟，崩溃啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","sticky":"置顶","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"icon-sun","moon":"icon-moon","play":"icon-play","email":"icon-email","next":"icon-next","calendar":"icon-calendar","clock":"icon-clock","user":"icon-user","back_top":"icon-back-top-copy","close":"icon-close","search":"icon-search","reward":"icon-line-reward","user_tag":"icon-user-tag-solid","toc_tag":"icon-TOC-tag","read":"icon-read","arrows":"icon-Arrows_Arrow_Narrow_Down","double_arrows":"icon-double-arrows","copy":"icon-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":false},"toc":{"post_title":true},"live_time":{"start_time":"","prefix":"博客已萌萌哒运行 undefined 天"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2024-03-06 16:41:43"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.1.10" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont icon-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont icon-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" style="opacity: 0">
+            <!-- top bar -->
+            <header class="trm-top-bar">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon.svg">
+    
+    
+        <div class="trm-logo-text">
+            Beifeng<span>WebPage</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    首页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/tags/" target="">
+                    标签
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/categories/" target="">
+                    分类
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/about/" target="">
+                    关于
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont icon-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont icon-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" src="/img/banner.png">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            NEWS LETTER
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            测试面经之基础篇
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        2024
+                                    </span>
+                                </li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <span id="scroll-triger" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </span>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div class="trm-page-sidebar col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    <div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card"> 
+        <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        BeiFeng
+    </h5>
+    
+        <div class="trm-label">
+            To shine,
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+        <!-- sidebar social -->
+
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<div class="trm-social">
+    
+        <a href="/null" title="gitee" rel="nofollow" target="_blank">
+            <i class="iconfont icon-gitee"></i>
+        </a>
+    
+        <a href="https://github.com/BeiFengSama" title="Github" rel="nofollow" target="_blank">
+            <i class="iconfont icon-github-fill"></i>
+        </a>
+    
+        <a href="https://space.bilibili.com/170546757" title="Bilibili" rel="nofollow" target="_blank">
+            <i class="iconfont icon-bilibili"></i>
+        </a>
+    
+</div>
+
+<!-- sidebar social end -->
+        <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                求职意向:
+            </div>
+            <div class="trm-label trm-label-light">
+                测试开发/软件测试
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                邮    箱:
+            </div>
+            <div class="trm-label trm-label-light">
+                2798305063@qq.com
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                学    校:
+            </div>
+            <div class="trm-label trm-label-light">
+                哈尔滨工程大学
+            </div>
+        </li>
+    
+        <li>
+            <div class="trm-label">
+                年    级:
+            </div>
+            <div class="trm-label trm-label-light">
+                2024届
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+        
+    <div class="trm-divider trm-mb-40 trm-mt-40"></div>
+    <!-- action button -->
+    <div class="text-center">
+        <a href="mailto:2798305063@qq.com" class="trm-btn">
+            联系我
+            <i class="iconfont icon-email"></i>
+        </a>
+    </div>
+    <!-- action button end -->
+
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div class="trm-page-content col-lg-8">
+                <div id="trm-content" class="trm-content">
+                    <div class="trm-post-info row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont icon-calendar trm-icon"></i><br>
+            03/06
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont icon-clock trm-icon"></i><br>
+            16:41
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont icon-user trm-icon"></i><br>
+            BeiFeng
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <p>本篇章为测试开发岗位面试题合集</p>
+<h2 id="测试基础"><a href="#测试基础" class="headerlink" title="测试基础"></a>测试基础</h2><h6 id="测试用例的方法、依据有哪些？"><a href="#测试用例的方法、依据有哪些？" class="headerlink" title="测试用例的方法、依据有哪些？"></a>测试用例的方法、依据有哪些？</h6><blockquote>
+<p>白盒测试：</p>
+<ul>
+<li>用例设计方法：语句覆盖、判定覆盖、条件覆盖、判定&#x2F;条件覆盖、条件组合覆盖、路径覆盖</li>
+<li>依据：代码结构</li>
+</ul>
+<p>黑盒测试</p>
+<ul>
+<li>用例设计方法：等价类划分、边界值分析法、错误推断方法、因果图方法、判定表驱动分析方法、正交实验法、场景法<br>依据：用户需求规格说明书、详细设计说明书</li>
+</ul>
+</blockquote>
+<h6 id="软件测试的流程"><a href="#软件测试的流程" class="headerlink" title="软件测试的流程"></a>软件测试的流程</h6><blockquote>
+<ul>
+<li>测试需求分析阶段：阅读需求，理解需求，主要就是对业务的学习，分析需求点，参与需求评审会议</li>
+<li>测试计划阶段：主要任务就是编写测试计划，参考软件需求规格说明书，项目总体计划，内容包括测试范围（来自需求文档），进度安排，人力物力的分配，整体测试策略的制定。风险评估与规避措施有一个制定。</li>
+<li>测试设计阶段：主要是编写测试用例，会参考需求文档（原型图），概要设计，详细设计等文档，用例编写完成之后会进行评审。</li>
+<li>测试执行阶段：搭建环境，执行冒烟测试（预测试）-然后进入正式测试，bug管理直到测试结束</li>
+<li>测试评估阶段：出测试报告，确认是否可以上线</li>
+</ul>
+<p>测试流程：了解用户需求–&gt;参考需求规格说明书–&gt;测试计划（人力物力时间进度的安排）–&gt;编写测试用例–&gt;评审用例–&gt;搭建环境–&gt;测试包安排预测（冒烟测试）-正式测试-bug-测试结束出报告–&gt;版本上线–&gt;面向用户</p>
+</blockquote>
+<h6 id="App和Web测试的区别"><a href="#App和Web测试的区别" class="headerlink" title="App和Web测试的区别"></a>App和Web测试的区别</h6><blockquote>
+<ul>
+<li>app和web测试的区别：<ul>
+<li>web项目，一般都是b&#x2F;s架构，基于浏览器的</li>
+<li>App则是C&#x2F;S的，必须要有客户端。那么在系统测试测试的时候就会产生区别了</li>
+</ul>
+</li>
+</ul>
+<p>首先从系统架构来看的话，Web测试只要更新了服务器端，客户端就会同步会更新。而且客户端是可以保证每一个用户的客户端完全一致的。但是App端是不能够保证完全一致的，除非用户更新客户端。如果是App下修改了服务端，意味着客户端用户所使用的核心版本都需要进行回归测试一遍。</p>
+<ul>
+<li>性能方面<ul>
+<li>web页面可能只会关注响应时间</li>
+<li>App则还需要关心流量、电量、CPU、GPU、Memory这些了</li>
+</ul>
+</li>
+<li>兼容方面<ul>
+<li>Web是基于浏览器的，所以更倾向于浏览器和电脑硬件，电脑系统的方向的兼容，不过一般还是以浏览器的为主。而浏览器的兼容则是一般是选择不同的浏览器内核进行测试（IE、chrome、Firefox）</li>
+<li>App的测试则必须依赖phone或者是pad，不仅要看分辨率，屏幕尺寸，还要看设备系统。系统总的来说也就分为Android和iOS，不过国内的Android的定制系统太多，也是比较容易出现问题的</li>
+</ul>
+</li>
+<li>相比较web测试，app更是多了一些专项测试<ul>
+<li>一些异常场景的考虑以及弱网络测试。这里的异常场景就是中断，来电，短信，关机，重启等</li>
+<li>而弱网测试是App测试中必须执行的一项测试。包含弱网和网络切换测试。需要测试弱网所造成的用户体验，重点要考虑回退和刷新是否会造成二次提交。需要测试丢包，延时的处理机制。避免用户的流失</li>
+<li>安装、卸载、更新<ul>
+<li>web测试是基于浏览器的所以不必考虑这些。而app是客户端的，则必须测试安装、更新、卸载。除了常规的安装、更新、卸载还要考虑到异常场景。包括安装时的中断、弱网、安装后删除安装文件，更新的强制更新与非强制更新、增量包更新、断点续传、弱网，卸载后删除App相关的文件等等</li>
+</ul>
+</li>
+<li>界面操作<ul>
+<li>现在app产品的用户都是使用的触摸屏手机，所以测试的时候还要注意手势，横竖屏切换，多点触控，事件触发区域等测试</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h6 id="Android中造成APP闪退的原因总结"><a href="#Android中造成APP闪退的原因总结" class="headerlink" title="Android中造成APP闪退的原因总结"></a>Android中造成APP闪退的原因总结</h6><blockquote>
+<ul>
+<li>弱网络情况下，服务端响应不及时，可能倒是闪退。（网络异常引起的）</li>
+<li>应用版本太低，会导致不兼容，造成闪退。（有些API在老版本中有,在新版本中没有,造成对象为空引起闪退）</li>
+<li>APP的SDK和手机的系统不兼容。</li>
+<li>缓存垃圾过多：由于安卓系统的特性，如果长时间不清理垃圾文件。会导致越来越卡，也会出现闪退情况。</li>
+<li>设计不合理，1个接口，拉取的数据量太大，请求结果会很慢，且占用大量内存，APP会闪退（比如，我们现在做的记录仪，进入相册列表时候，要拉取所有图片，拉取太慢了，就闪退了）</li>
+<li>不同APP间切换，交互测试，可能会出现闪退。</li>
+<li>权限问题</li>
+</ul>
+</blockquote>
+<h6 id="网页很卡的原因"><a href="#网页很卡的原因" class="headerlink" title="网页很卡的原因"></a>网页很卡的原因</h6><blockquote>
+<ul>
+<li>带宽不足、硬件配置低、CPU或者是内存被占满。</li>
+<li>http请求次数太多。</li>
+<li>接收数据时间过长，如下载资源过大。</li>
+<li>JS脚本过大，阻塞了页面的加载。</li>
+<li>网页资源过多、接受数据时间长、加载某个资源慢。</li>
+<li>DNS解析速度。</li>
+</ul>
+</blockquote>
+<h6 id="单元测试、集成测试、系统测试"><a href="#单元测试、集成测试、系统测试" class="headerlink" title="单元测试、集成测试、系统测试"></a>单元测试、集成测试、系统测试</h6><blockquote>
+<ul>
+<li>粒度不同<ul>
+<li>单元测试粒度最小，集成测试粒度居中，系统测试粒度最大</li>
+</ul>
+</li>
+<li>测试方式不同<ul>
+<li>单元测试一般由开发小组采用白盒方式来测试，集成测试一般由开发小组采用白盒加黑盒的方式来测试，系统测试一般由独立测试小组采用黑盒方式来测试</li>
+</ul>
+</li>
+<li>测试内容不同<ul>
+<li>单元测试主要测试单元是否符合“设计”，集成测试既验证“设计”，又验证“需求”，系统测试主要测试系统是否符合“需求规格说明书”</li>
+</ul>
+</li>
+<li>使用阶段不同<ul>
+<li>单元测试为开发人员在开发阶段要做的事情，集成测试和系统测试为测试人员在测试周期内级层做的工作</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h6 id="聊天功能设计测试用例"><a href="#聊天功能设计测试用例" class="headerlink" title="聊天功能设计测试用例"></a>聊天功能设计测试用例</h6><blockquote>
+<ul>
+<li>发送对象（普通用户、公众号、群、其他特殊主体）</li>
+<li>衍生功能（转发、语音转文字、删除等）</li>
+<li>消息发送—单聊、群聊、语音、文字、图片、表情、链接、字符及长度</li>
+<li>消息管理—发布通知、接受通知、发文件、消息提醒、通知提醒、声音、震动、好友请求、请求处理<br>发送内容（空白、正常文字、超长文字、以前曾经引起过崩溃的特殊内容、特殊字符、表情、图片、多媒体、红包、语音等）</li>
+<li>消息推送—在线、离线、收发、时序<br>权限管理—开放群（任何人入群），半开放群（验证入群），验证加好友，不需验证加好友</li>
+<li>隐私管理—黑名单，允许好友查看动态，允许陌生人查看动态，允许通过手机号查找，允许真实姓名查找<br>成员管理—加人，被加，退出，被动退出，编辑，删除</li>
+<li>群组管理—创建群，消息设置，申请入群，扫二维码入群，退群，通知提醒，头像编辑，名称编辑，简介编辑，权限编辑，成员编辑</li>
+<li>好友管理—扫二维码加人，加好友，查好友，好友推荐，群组推荐，联系人导入，拉黑名单，解除好友，备注名</li>
+<li>动态管理—发动态，发投票，点赞，表情，评论，增加，删除，分享，隐藏，编辑</li>
+<li>登录退出—忘记密码，更换账号</li>
+<li>文件管理—接收，离线接收，预览，删除，分享，转存，文件格式，大小</li>
+<li>语音聊天—接通&#x2F;挂断、通话质量、耳机插拔、音量调解、话筒&#x2F;扬声器切换、打开&#x2F;关闭麦克风、后台挂起</li>
+<li>视频聊天—接通&#x2F;挂点&#x2F;切换语音、视频质量、耳机插拔、音量调解、话筒&#x2F;扬声器切换、前置后置摄像头切换、视频框切换、后台挂起</li>
+</ul>
+</blockquote>
+<h6 id="微信红包功能怎么测试"><a href="#微信红包功能怎么测试" class="headerlink" title="微信红包功能怎么测试"></a>微信红包功能怎么测试</h6><blockquote>
+<ul>
+<li>功能<ul>
+<li>在红包钱数，和红包个数的输入框中只能输入数字</li>
+<li>红包里最多和最少可以输入的钱数 200 0.01</li>
+<li>拼手气红包最多可以发多少个红包 100、超过最大拼手气红包的个数是否有提醒</li>
+<li>当红包钱数超过最大范围是不是有对应的提示</li>
+<li>当发送的红包个数超过最大范围是不是有提示</li>
+<li>当余额不足时，红包发送失败</li>
+<li>在红包描述里是否可以输入汉字，英文，符号，表情，纯数字，汉字英语符号，是否可以输入它们的混合搭配</li>
+<li>输入红包钱数是不是只能输入数字</li>
+<li>红包描述里许多能有多少个字符 10个</li>
+<li>红包描述，金额，红包个数框里是否支持复制粘贴操作</li>
+<li>红包描述里的表情可以删除</li>
+<li>发送的红包别人是否可以领取、发的红包自己可不可以领取 2人</li>
+<li>24小时内没有领取的红包是否可以退回到原来的账户、超过24小时没有领取的红包，是否还可以领取</li>
+<li>用户是否可以多次抢一个红包</li>
+<li>发红包的人是否还可以抢红包 多人</li>
+<li>红包的金额里的小数位数是否有限制</li>
+<li>可以按返回键，取消发红包</li>
+<li>断网时，无法抢红包</li>
+<li>可不可以自己选择支付方式</li>
+<li>余额不足时，会不会自动匹配支付方式</li>
+<li>在发红包界面能否看到以前的收发红包的记录</li>
+<li>红包记录里的信息与实际收发红包记录是否匹配</li>
+<li>支付时可以密码支付也可以指纹支付</li>
+<li>如果直接输入小数点，那么小数点之前应该有个0</li>
+<li>支付成功后，退回聊天界面</li>
+<li>发红包金额和收到的红包金额应该匹配</li>
+<li>是否可以连续多次发红包</li>
+<li>输入钱数为0，”塞钱进红包”置灰</li>
+</ul>
+</li>
+<li>性能<ul>
+<li>弱网时抢红包，发红包时间</li>
+<li>不同网速时抢红包，发红包的时间</li>
+<li>发红包和收红包成功后的跳转时间</li>
+<li>收发红包的耗电量</li>
+<li>退款到账的时间</li>
+</ul>
+</li>
+<li>兼容<ul>
+<li>苹果，安卓是否都可以发送红包</li>
+<li>电脑端可以抢微信红包</li>
+</ul>
+</li>
+<li>界面<ul>
+<li>发红包界面没有错别字</li>
+<li>抢完红包界面没有错别字</li>
+<li>发红包和收红包界面排版合理，</li>
+<li>发红包和收到红包界面颜色搭配合理</li>
+</ul>
+</li>
+<li>安全<ul>
+<li>对方微信号异地登录，是否会有提醒 2人</li>
+<li>红包被领取以后，发送红包人的金额会减少，收红包金额会增加</li>
+<li>发送红包失败，余额和银行卡里的钱数不会少</li>
+<li>红包发送成功，是否会收到微信支付的通知</li>
+</ul>
+</li>
+<li>易用性(有点重复)<ul>
+<li>红包描述，可以通过语音输入</li>
+<li>可以指纹支付也可以密码支付</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h6 id="微信朋友圈的点赞功能"><a href="#微信朋友圈的点赞功能" class="headerlink" title="微信朋友圈的点赞功能"></a>微信朋友圈的点赞功能</h6><blockquote>
+<ul>
+<li>是否可以点赞、取消点赞</li>
+<li>多次点赞会出现什么情况</li>
+<li>多人点赞时的顺序是否按照时间顺序进行排列</li>
+<li>点赞是否显示头像和名称</li>
+<li>点赞之后能否进行评论</li>
+<li>点赞之后退出该页面，再次进入朋友圈点赞消息是否还存在</li>
+<li>多用户点赞，再次打开朋友圈是是否可以按照顺序看到是谁谁谁赞了我</li>
+<li>弱网络的情况下点赞能否实时更新</li>
+<li>点赞时有短信或电话进来，能否显示点赞情况</li>
+<li>点赞的人是否在可见分组里</li>
+<li>点赞之后共同好友的点赞和评论是否会提醒你</li>
+</ul>
+</blockquote>
+
+</article>
+    
+    
+
+</div>
+<div class="trm-post-next-prev row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation">
+        <a href="/2024/03/05/hello-world/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img alt="cover" class="no-fancybox" src="/img/block.jpg">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/hexo%E6%95%99%E7%A8%8B/">
+                    hexo教程
+                </a>
+            </div>
+            <h5>
+                <a href="/2024/03/05/hello-world/" class="trm-anima-link">
+                    Hello World
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>24/03/05</li>
+                <li>22:18</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation">
+
+    
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v7.1.1
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.1.10
+            </span>
+        </div>
+      
+
+     
+
+     
+</footer>
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            
+
+            
+<div class="trm-fixed-container">
+    
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont icon-read"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont icon-back-top-copy"></i>
+    </div>
+</div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+  </div>
+  <!-- app wrapper end -->
+
+  
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://unpkg.com/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="/js/plugins/typing.js?v=2.1.10"></script>
+    
+
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+
+
+<script id="async-script" src="/js/main.js?v=2.1.10"></script>
+
+</body>
+
+</html>
